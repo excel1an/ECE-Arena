@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <allegro.h>
+
+int main()
+{
+    int x,y;
+    int choix;
+
+    /* on déclare notre variable qui représente la position de l’image. Si vous programmez
+    en C, placez là au début de la fonction main */
+
+
+    allegro_init();//initialisation
+
+    install_keyboard();//pour utiliser le clavier
+    install_mouse();//pour pouvoir utiliser la souris
+
+    set_color_depth(desktop_color_depth());//Couleur
+    /* Maintenant, on déclare notre sprite de type pointeur vers BITMAP. Attention, il s’agit
+        bien d’un pointeur ! Faites attention de ne pas oublier « * » */
+    BITMAP* image ;
+
+    if ((set_gfx_mode(GFX_AUTODETECT_WINDOWED,1400,800,0,0))!=0)
+    {
+        allegro_message("Probleme de mode graphique");
+        allegro_exit();
+        exit(EXIT_FAILURE);
+    }
+
+
+
+
+    /* Placez ces lignes après l’initialisation du mode vidéo ! */
+    image = load_bitmap("TESTPERS.bmp", NULL) ;
+    /* Maintenant, on doit vérifier si le bitmap chargé est valide ! */
+    while(!key[KEY_ESC])
+    {
+        draw_sprite(screen,image,50,100);
+    }
+
+    return 1;
+    }
+
+END_OF_MAIN();
