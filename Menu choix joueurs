@@ -26,10 +26,19 @@ int main()
 
     while(!key[KEY_ESC])
     {
+            textprintf_ex(screen,font,160,40,makecol(245,180,25),-1, " 000000    00   00   00       00       000000   00000000            0000   00        0000    000000   00  00 ");
+            textprintf_ex(screen,font,160,50,makecol(245,180,25),-1, " 00   00   00   00   00       00       00          00             000      00       00  00   00   0   00  00 ");
+            textprintf_ex(screen,font,160,60,makecol(245,180,25),-1, " 00   00   00   00   00       00       00          00            00        00       00  00   00       00  00 ");
+            textprintf_ex(screen,font,160,70,makecol(245,180,25),-1, " 000000    00   00   00       00       000000      00            00        00       000000   000000   000000 ");
+            textprintf_ex(screen,font,160,80,makecol(245,180,25),-1, " 00   00   00   00   00       00       00          00            00        00       00  00       00   00  00 ");
+            textprintf_ex(screen,font,160,90,makecol(245,180,25),-1, " 00   00   00   00   00       00       00          00             000      00       00  00   0   00   00  00 ");
+            textprintf_ex(screen,font,160,100,makecol(245,180,25),-1," 000000    0000000   000000   000000   000000      00               0000   000000   00  00   000000   00  00 ");
+
+            textprintf_ex(screen,font,410,200,makecol(230,230,230),-1," Selectionnez le nombre de joueurs de la partie ");
+
 
         ///Boutons nombre de joueurs
 
-            textprintf_ex(screen,font,410,100,makecol(230,230,230),-1," Selectionnez le nombre de joueurs de la partie ");
 
             ///Rect(screen,X1,Y1,X2,Y2, makecol()
 
@@ -114,3 +123,4 @@ int main()
 
     }return 0;
 }END_OF_MAIN();
+
