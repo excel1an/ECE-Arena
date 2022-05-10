@@ -21,7 +21,7 @@ int main()
         bien d’un pointeur ! Faites attention de ne pas oublier « * » */
     BITMAP* image ;
 
-    if ((set_gfx_mode(GFX_AUTODETECT_WINDOWED,1400,800,0,0))!=0)
+    if ((set_gfx_mode(GFX_AUTODETECT_WINDOWED,1200,650,0,0))!=0)
     {
         allegro_message("Probleme de mode graphique");
         allegro_exit();
@@ -39,7 +39,7 @@ int main()
     /* Maintenant, on doit vérifier si le bitmap chargé est valide ! */
     while(!key[KEY_ESC])
     {
-        draw_sprite(screen,image,50,150);
+        draw_sprite(screen,image,10,25);/*
         textprintf_ex(screen,font,50,40,makecol(245,180,25),-1, " 000000    00   00   00       00       0000000   00000000 ");
         textprintf_ex(screen,font,50,50,makecol(245,180,25),-1, " 00   00   00   00   00       00       00           00     ");
         textprintf_ex(screen,font,50,60,makecol(245,180,25),-1, " 00   00   00   00   00       00       00           00    ");
@@ -47,7 +47,7 @@ int main()
         textprintf_ex(screen,font,50,80,makecol(245,180,25),-1, " 00   00   00   00   00       00       00           00   ");
         textprintf_ex(screen,font,50,90,makecol(245,180,25),-1, " 00   00   00   00   00       00       00           00   ");
         textprintf_ex(screen,font,50,100,makecol(245,180,25),-1," 000000    0000000   000000   000000   0000000      00    ");
-
+        */
     }
 
     return 1;
