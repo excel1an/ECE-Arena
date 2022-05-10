@@ -29,6 +29,8 @@ int main()
 
         ///Boutons nombre de joueurs
 
+            textprintf_ex(screen,font,410,100,makecol(230,230,230),-1," Selectionnez le nombre de joueurs de la partie ");
+
             ///Rect(screen,X1,Y1,X2,Y2, makecol()
 
             ///rectangle n°2
@@ -80,7 +82,7 @@ int main()
                 {
                     if(mouse_b&1 || mouse_b&2)
                     {
-                        textprintf_ex(screen,font,500,580,makecol(200,200,200),-1," Partie de 2   joueurs");
+                        textprintf_ex(screen,font,500,570,makecol(220,220,220),-1," Partie de 2   joueurs");
 
                         nbjoueurs = 2;
                     }
@@ -92,7 +94,7 @@ int main()
                 {
                     if(mouse_b&1)
                     {
-                        textprintf_ex(screen,font,500,580,makecol(200,200,200),-1," Partie de  3  joueurs");
+                        textprintf_ex(screen,font,500,570,makecol(220,220,220),-1," Partie de  3  joueurs");
 
                         nbjoueurs = 3;
                     }
@@ -104,7 +106,7 @@ int main()
                 {
                     if(mouse_b&1)
                     {
-                        textprintf_ex(screen,font,500,580,makecol(200,200,200),-1," Partie de   4 joueurs");
+                        textprintf_ex(screen,font,500,570,makecol(220,220,220),-1," Partie de   4 joueurs");
 
                         nbjoueurs = 4;
                     }
