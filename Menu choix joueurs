@@ -2,10 +2,26 @@
 #include <stdlib.h>
 #include <allegro.h>
 
+void effacEcran()
+    {
+        int i=0,j=0;
+
+        for (j=0;j<651;j++)
+                 {
+                     for (i=0;i<1201;i++)
+                     {
+                         //putpixel(screen,i,j,makecol(0,0,0));
+                         clear(screen);
+
+                     }
+                 }
+        rest(1000);
+    }
+
 int main()
 {
     allegro_init();//initialisation
-    int i=0;
+    int i=0,j=0;
     int nbjoueurs =0;
 
     install_keyboard();//pour utiliser le clavier
@@ -24,103 +40,116 @@ int main()
 
     show_mouse(screen);
 
-    while(!key[KEY_ESC])
+
+    while(!((nbjoueurs==2)||(nbjoueurs==3)||(nbjoueurs==4)))
     {
-            textprintf_ex(screen,font,160,40,makecol(245,180,25),-1, " 000000    00   00   00       00       000000   00000000            0000   00        0000    000000   00  00 ");
-            textprintf_ex(screen,font,160,50,makecol(245,180,25),-1, " 00   00   00   00   00       00       00          00             000      00       00  00   00   0   00  00 ");
-            textprintf_ex(screen,font,160,60,makecol(245,180,25),-1, " 00   00   00   00   00       00       00          00            00        00       00  00   00       00  00 ");
-            textprintf_ex(screen,font,160,70,makecol(245,180,25),-1, " 000000    00   00   00       00       000000      00            00        00       000000   000000   000000 ");
-            textprintf_ex(screen,font,160,80,makecol(245,180,25),-1, " 00   00   00   00   00       00       00          00            00        00       00  00       00   00  00 ");
-            textprintf_ex(screen,font,160,90,makecol(245,180,25),-1, " 00   00   00   00   00       00       00          00             000      00       00  00   0   00   00  00 ");
-            textprintf_ex(screen,font,160,100,makecol(245,180,25),-1," 000000    0000000   000000   000000   000000      00               0000   000000   00  00   000000   00  00 ");
 
-            textprintf_ex(screen,font,410,200,makecol(230,230,230),-1," Selectionnez le nombre de joueurs de la partie ");
+                    textprintf_ex(screen,font,160,40,makecol(245,180,25),-1, " 000000    00   00   00       00       000000   00000000            0000   00        0000    000000   00  00 ");
+                    textprintf_ex(screen,font,160,50,makecol(245,180,25),-1, " 00   00   00   00   00       00       00          00             000      00       00  00   00   0   00  00 ");
+                    textprintf_ex(screen,font,160,60,makecol(245,180,25),-1, " 00   00   00   00   00       00       00          00            00        00       00  00   00       00  00 ");
+                    textprintf_ex(screen,font,160,70,makecol(245,180,25),-1, " 000000    00   00   00       00       000000      00            00        00       000000   000000   000000 ");
+                    textprintf_ex(screen,font,160,80,makecol(245,180,25),-1, " 00   00   00   00   00       00       00          00            00        00       00  00       00   00  00 ");
+                    textprintf_ex(screen,font,160,90,makecol(245,180,25),-1, " 00   00   00   00   00       00       00          00             000      00       00  00   0   00   00  00 ");
+                    textprintf_ex(screen,font,160,100,makecol(245,180,25),-1," 000000    0000000   000000   000000   000000      00               0000   000000   00  00   000000   00  00 ");
 
-
-        ///Boutons nombre de joueurs
+                    textprintf_ex(screen,font,410,200,makecol(230,230,230),-1," Selectionnez le nombre de joueurs de la partie ");
 
 
-            ///Rect(screen,X1,Y1,X2,Y2, makecol()
-
-            ///rectangle n°2
-
-            rect(screen,100,300,300,500, makecol(116,195,101));
-            rect(screen,101,301,299,499, makecol(116,195,101));
-            rect(screen,102,302,298,498, makecol(116,195,101));
-            rect(screen,103,303,297,497, makecol(116,195,101));
-            rect(screen,104,304,296,496, makecol(116,195,101));
-            rect(screen,105,305,295,495, makecol(116,195,101));
-
-            ///rectangle n°3
-
-            rect(screen,500,300,700,500, makecol(235,140,35));
-            rect(screen,501,301,699,499, makecol(235,140,35));
-            rect(screen,502,302,698,498, makecol(235,140,35));
-            rect(screen,503,303,697,497, makecol(235,140,35));
-            rect(screen,504,304,696,496, makecol(235,140,35));
-            rect(screen,505,305,695,495, makecol(235,140,35));
-
-            ///rectangle n°4
-
-            rect(screen,900,300,1100,500, makecol(70,190,255));
-            rect(screen,901,301,1099,499, makecol(70,190,255));
-            rect(screen,902,302,1098,498, makecol(70,190,255));
-            rect(screen,903,303,1097,497, makecol(70,190,255));
-            rect(screen,904,304,1096,496, makecol(70,190,255));
-            rect(screen,905,305,1095,495, makecol(70,190,255));
-
-            ///numéros
-
-            textprintf_ex(screen,font,200,400,makecol(116,195,101),-1,"2");
-            textprintf_ex(screen,font,600,400,makecol(235,140,35),-1,"3");
-            textprintf_ex(screen,font,1000,400,makecol(70,190,255),-1,"4");
+                ///Boutons nombre de joueurs
 
 
-            ///rectangle de selection
-            rect(screen,400,550,800,600,makecol(255,255,255));
+                    ///Rect(screen,X1,Y1,X2,Y2, makecol()
+
+                    ///rectangle n°2
+
+                    rect(screen,100,300,300,500, makecol(116,195,101));
+                    rect(screen,101,301,299,499, makecol(116,195,101));
+                    rect(screen,102,302,298,498, makecol(116,195,101));
+                    rect(screen,103,303,297,497, makecol(116,195,101));
+                    rect(screen,104,304,296,496, makecol(116,195,101));
+                    rect(screen,105,305,295,495, makecol(116,195,101));
+
+                    ///rectangle n°3
+
+                    rect(screen,500,300,700,500, makecol(235,140,35));
+                    rect(screen,501,301,699,499, makecol(235,140,35));
+                    rect(screen,502,302,698,498, makecol(235,140,35));
+                    rect(screen,503,303,697,497, makecol(235,140,35));
+                    rect(screen,504,304,696,496, makecol(235,140,35));
+                    rect(screen,505,305,695,495, makecol(235,140,35));
+
+                    ///rectangle n°4
+
+                    rect(screen,900,300,1100,500, makecol(70,190,255));
+                    rect(screen,901,301,1099,499, makecol(70,190,255));
+                    rect(screen,902,302,1098,498, makecol(70,190,255));
+                    rect(screen,903,303,1097,497, makecol(70,190,255));
+                    rect(screen,904,304,1096,496, makecol(70,190,255));
+                    rect(screen,905,305,1095,495, makecol(70,190,255));
+
+                    ///numéros
+
+                    textprintf_ex(screen,font,200,400,makecol(116,195,101),-1,"2");
+                    textprintf_ex(screen,font,600,400,makecol(235,140,35),-1,"3");
+                    textprintf_ex(screen,font,1000,400,makecol(70,190,255),-1,"4");
+
+
+                    ///rectangle de selection
+                    rect(screen,400,550,800,600,makecol(255,255,255));
 
 
 
 
 
-        ///Test clic
+                ///Test clic
 
-                ///bouton 2
+                        ///bouton 2
 
-                if ((mouse_x<300)&&(mouse_x>100)&&(mouse_y<500)&&(mouse_y>300))
-                {
-                    if(mouse_b&1 || mouse_b&2)
-                    {
-                        textprintf_ex(screen,font,510,570,makecol(220,220,220),-1," Partie de 2   joueurs");
+                        if ((mouse_x<300)&&(mouse_x>100)&&(mouse_y<500)&&(mouse_y>300))
+                        {
+                            if(mouse_b&1 || mouse_b&2)
+                            {
+                                textprintf_ex(screen,font,510,570,makecol(220,220,220),-1," Partie de 2  joueurs");
 
-                        nbjoueurs = 2;
-                    }
-                }
+                                nbjoueurs = 2;
+                                rest(1000);
+                                effacEcran();
+                            }
+                        }
 
-                ///bouton 3
+                        ///bouton 3
 
-                if ((mouse_x<700)&&(mouse_x>500)&&(mouse_y<500)&&(mouse_y>300))
-                {
-                    if(mouse_b&1)
-                    {
-                        textprintf_ex(screen,font,510,570,makecol(220,220,220),-1," Partie de  3  joueurs");
+                        if ((mouse_x<700)&&(mouse_x>500)&&(mouse_y<500)&&(mouse_y>300))
+                        {
+                            if(mouse_b&1)
+                            {
+                                textprintf_ex(screen,font,510,570,makecol(220,220,220),-1," Partie de  3  joueurs");
 
-                        nbjoueurs = 3;
-                    }
-                }
+                                nbjoueurs = 3;
+                                rest(1000);
+                                effacEcran();
+                            }
+                        }
 
-                ///bouton 4
+                        ///bouton 4
 
-                if ((mouse_x<1100)&&(mouse_x>900)&&(mouse_y<500)&&(mouse_y>300))
-                {
-                    if(mouse_b&1)
-                    {
-                        textprintf_ex(screen,font,510,570,makecol(220,220,220),-1," Partie de   4 joueurs");
+                        if ((mouse_x<1100)&&(mouse_x>900)&&(mouse_y<500)&&(mouse_y>300))
+                        {
+                            if(mouse_b&1)
+                            {
+                                textprintf_ex(screen,font,510,570,makecol(220,220,220),-1," Partie de  4 joueurs");
 
-                        nbjoueurs = 4;
-                    }
-                }
+                                nbjoueurs = 4;
+                                rest(1000);
+                                effacEcran();
+                            }
+                        }
 
-    }return 0;
+    }
+
+    return 0;
 }END_OF_MAIN();
+
+
+
 
