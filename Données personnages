@@ -1,0 +1,187 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <allegro.h>
+
+void initialisationAllegro();
+
+
+//creation personnage
+void caracteristiques_de_base()
+{
+    int points_vie; //-> 75
+    int points_action;//-> 5 avec cumul possible à 10 et +3 par tour
+    int points_mouvement; //-> 3
+    int nombre_sorts; //-> 4 + corps à corps
+
+}
+
+
+/*
+    PAM :
+
+    attaque au corps a corps :
+        - nom : eclats d'obus
+        - 5% d'echouer
+        - 5 de degats avec + ou - 2 (entre 3 et 7)
+        - cout point action : 1
+
+    attaque au sort 1 :
+        - vague de debris
+        - 10% d'echouer
+        - 7 de degats avec + ou - 1 (entre 6 et 8)
+        - cout point action : 2
+        - limite de range : 6 cases (style cercle)
+
+    attaque au sort 2 :
+        -  nom : rafale de debris
+        - 15% d'echouer
+        - 8 de degats avec + ou - 2 (entre 6 et 10)
+        - cout point action : 3
+        - limite de range : 6 cases (horizontal et vertical only)
+
+    attaque au sort 3 :
+        - meteore de debris
+        - 20% d'echouer
+        - 10 de degats avec + ou - 3 (entre 7 et 13)
+        - cout point action : 4
+        - limite de range : 6 cases -> soit horizontal vertical soit forme losange et du coup peut etre degat de zone (à revoir)
+
+    attaque au sort 4 : (attaque speciale)
+        - nom : sort prodigieux
+        - 35% d'echouer
+        - poison-> 6 points de degats sur 3 tours avec +/- 1 (entre 5 et 7) + soin-> 3 points de regeneration sur 3 tours avec +/- 1 (entre 2 et 4)
+        - cout point action : 7
+        - limite de range : 5 cases (forme cercle)
+
+*/
+
+/*
+    SPIKE :
+
+    attaque au corps a corps :
+        - nom : epee d'epines
+        - 20% d'echouer
+        - 12 de degats avec + ou - 2 (entre 10 et 14)
+        - cout point action : 3
+
+    attaque au sort 1 :
+        - lance d'epines
+        - 5% d'echouer
+        - 6 de degats avec + ou - 1 (entre 5 et 7)
+        - cout point action : 2
+        - limite de range : 5 cases (horizontal et vertical)
+
+    attaque au sort 2 :
+        - nom : grenade d'epines
+        - 12% d'echouer
+        - 8 de degats avec + ou - 2 (entre 6 et 10)
+        - cout point action : 3
+        - limite de range : 3 cases (zone cercle)
+
+    attaque au sort 3 :
+        - lance cactus (comme lance roquettes)
+        - 20% d'echouer
+        - 11 de degats avec + ou - 3 (entre 8 et 14)
+        - cout point action : 4
+        - limite de range : 7 cases (horizontal et vertical) ou losange vide si facile à faire
+
+    attaque au sort 4 : (attaque speciale)
+        - nom : cimetiere d'epines
+        - 35% d'echouer
+        - 13 de degats avec +/- 4 (entre 9 et 17) sur tous les ennemis compris dans la zone soit de 6 cases autour
+        - cout point action : 7
+        - limite de range : 4 cases
+        - range de l'attaque : 6 cases (zone de cercle)
+*/
+
+
+/*
+    DARRYL :
+
+    attaque au corps a corps :
+        - nom : canon sur la tampe
+        - 15% d'echouer
+        - 12 de degats avec + ou - 2 (entre 10 et 14)
+        - cout point action : 3
+
+    attaque au sort 1 :
+        - nom : neuf millimetre
+        - 15% d'echouer
+        - 9 de degats avec + ou - 2 (entre 7 et 11)
+        - cout point action : 3
+        - limite de range : 3 cases (horizontal et vertical)
+
+    attaque au sort 2 :
+        - nom : minigun
+        - 5% d'echouer
+        - 5 de degats avec + ou - 2 (entre 3 et 7)
+        - cout point action : 2
+        - limite de range : 7 cases (zone cercle)
+
+    attaque au sort 3 :
+        - lance roquettes
+        - 12% d'echouer
+        - 11 de degats avec + ou - 3 (entre 8 et 14)
+        - cout point action : 4
+        - limite de range : 5 cases (horizontal et vertical)
+
+    attaque au sort 4 : (attaque speciale)
+        - nom : missile teleguide
+        - 30% d'echouer
+        - 15 de degats avec +/- 5 (entre 10 et 20)
+        - cout point action : 8
+        - limite de range : illimité (toute la map)
+        - cible une seule personne
+
+*/
+
+
+void initialisationAllegro()
+{
+    allegro_init();
+    set_color_depth(desktop_color_depth());
+    if((set_gfx_mode(GFX_AUTODETECT_WINDOWED,800,600,0,0))!=0)
+     { 	allegro_message("Pb de mode graphique") ;
+    allegro_exit();
+    exit(EXIT_FAILURE); }
+}
+
+
+
+void affichage_joueurs()
+{
+    ///Declarations
+
+    int i;
+   f  ///Affichage pour chaque joueur
+
+    //for(i=1;i<  ??? ;i++) -> ??? par rapport au tour
+    //{
+        while(!key[KEY_ESC]) // condition a mettre : tant que choix/clic pas fait
+        {
+            //textprintf_ex(screen,font,650,105,makecol(0,255,0),-1," Donnees joueurs : ",i);
+
+            rect(screen,625,100,1150,325,makecol(255,255,0));
+
+            textprintf_ex(screen,font,650,125,makecol(255,255,255),-1,"PV : ");
+
+            textprintf_ex(screen,font,650,145,makecol(255,255,255),-1,"PA : ");
+
+            textprintf_ex(screen,font,650,185,makecol(255,255,255),-1,"PM : ");
+
+            // textprintf_ex(screen,font,650,205,makecol(255,255,255),-1,"corps a corps");
+            // textprintf_ex(screen,font,650,225,makecol(255,255,255),-1,"sort 1");
+            // textprintf_ex(screen,font,650,245,makecol(255,255,255),-1,"sort 2");
+            // textprintf_ex(screen,font,650,265,makecol(255,255,255),-1,"sort 3");
+            // textprintf_ex(screen,font,650,285,makecol(255,255,255),-1,"sort 4");
+
+        }
+
+}
+
+/*
+faire un sous prog pour chaque perso avec fonctions textprintf_ex
+faire sous prog du tour
+faire sous prog attribution d'un numero par joueur pour ordre de passage
+et en fonction de tour appeler sous prog du perso concerne dans affichage pour mettre ses caracteristiques
+*/
