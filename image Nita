@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <allegro.h>
+
+void init_allegro()
+{
+    allegro_init();
+    install_mouse();
+    install_keyboard();
+    set_color_depth(desktop_color_depth());
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,800,600,0,0)!=0)
+    {
+        allegro_message("probleme mode graphique");
+        allegro_exit();
+        exit(EXIT_FAILURE);
+    }
+    show_mouse(screen);
+}
+
+int main()
+{
+    init_allegro();
+
+    BITMAP* sprite;
+    BITMAP* buffer;
+
+    buffer=create_bitmap(1200, 650);
+    sprite=load_bitmap("nita.bmp", NULL);
+
+    while(!key[KEY_ESC])
+    {
+        blit(sprite, screen, 0, 0, 0, 0, 800, 600);
+    }
+    return 0;
+}END_OF_MAIN();
