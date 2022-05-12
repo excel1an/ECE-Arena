@@ -1,0 +1,93 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <allegro.h>
+
+void init_Allegro()
+{
+    allegro_init();
+    install_keyboard();
+    install_mouse();
+    set_color_depth(desktop_color_depth());
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,800,600,0,0)!=0)
+    {
+        allegro_message("probleme mode graphique");
+        allegro_exit();
+        exit(EXIT_FAILURE);
+    }
+    show_mouse(screen);
+
+}
+
+/// creation du personnage
+
+void caracteristique_perso()
+{
+    int PV; // PV=75
+    int PA; // 5 avec cumul à 10 et +3 par tour
+    int PM; // PM=3
+    int sorts; // 4 + un corps à corps
+}
+
+/*
+    NITA :
+
+    attaque au corps à corps :
+        - nom : fissure
+        - 5% d'échec
+        - 5 de dégats avec plus ou moins 2 (entre 3 et 7)
+        - coût PA : 1
+
+
+    attaque de sort 1 :
+        - nom : rugissement
+        - 10% d'échec
+        - 6 de dégats avec plus ou moins 2 (entre 4 et 8)
+        - cout PA : 2
+        - limite de range : 3 cases (ligne, verticale ou horizontale)
+
+
+    attaque de sort 2 :
+        - nom : coup de patte
+        - 15% d'échec
+        - 8 de degats avec plus ou moins 1 (entre 7 et 9)
+        - cout PA : 3
+        - limite de range : 4 cases (cercle)
+
+
+    attaque de sort 3 :
+        - nom : tremblement de terre
+        - 20% d'échec
+        - 11 de degats avec plus ou moins 1 (entre 10 et 12)
+        - cout PA : 5
+        - limite de range : 4 cases, sur deux (ou trois) lignes adjacentes, devant le personnage
+
+
+    attaque de sort 4 : (attaque spéciale)
+        - nom : onde de choc
+        - 35% d'échec
+        - 14 de degats plus ou moins 2 (entre 12 et 16)
+        - cout PA : 7
+        - limite de range : 6 cases(forme de cercle autour du personnage)
+
+*/
+
+void affichage_perso()
+{
+    int i;
+
+    while(!key[KEY_ESC])
+    {
+        rect(screen, 600, 100, 400, 400, makecol(255, 0, 0));
+        textprintf_ex(screen, font, 475, 125, makecol(255, 255, 255), -1, "NITA ");
+        textprintf_ex(screen, font, 425, 165, makecol(255, 255, 255), -1, "PV : ");
+        textprintf_ex(screen, font, 425, 185, makecol(255, 255, 255), -1, "PA : ");
+        textprintf_ex(screen, font, 425, 205, makecol(255, 255, 255), -1, "PM : ");
+    }
+}
+
+int main()
+{
+    init_Allegro();
+    affichage_perso();
+    return 0;
+}END_OF_MAIN();
