@@ -34,7 +34,7 @@ void caracteristique_perso()
     attaque au corps à corps :
         - nom : fissure
         - 5% d'échec
-        - 5 de dégats avec plus ou moins 2 (entre 3 et 7)
+        - 4 de dégats avec plus ou moins 2 (entre 3 et 7)
         - coût PA : 1
 
 
