@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <allegro.h>
+
+int main()
+{
+    allegro_init();///initialisation
+    int i=0,j=0;
+    int joueurs =0;
+
+    BITMAP* img1;
+    BITMAP* img2;
+    BITMAP* img3;
+    BITMAP* img4;
+
+    install_keyboard(); ///pour utiliser le clavier
+    install_mouse();   ///pour pouvoir utiliser la souris
+
+    set_color_depth(desktop_color_depth());///Couleur
+
+    if ((set_gfx_mode(GFX_AUTODETECT_WINDOWED,1200,650,0,0))!=0)
+    {
+        allegro_message("Probleme de mode graphique");
+        allegro_exit();
+        exit(EXIT_FAILURE);
+    }
+
+    show_mouse(screen);
+
+    img1 = load_bitmap("Carte Nita.bmp", NULL) ;
+    img2= load_bitmap("Carte Pam.bmp", NULL) ;
+    img3 = load_bitmap("Carte Darryl.bmp", NULL);
+    img4 = load_bitmap("Carte Spike.bmp", NULL);
+
+     while(!key[KEY_ESC])
+    {
+        draw_sprite(screen,img1,5,200);
+        blit(img2,screen,0,0,305,200,293,355);///draw_sprite(screen,img2,310,200);
+        blit(img3,screen,0,0,305+298,200,293,355);//draw_sprite(screen,img3,610,200);
+        blit(img4,screen,0,0,305+298+298,200,293,355);//draw_sprite(screen,img4,910,200);
+
+    }
+
+    return 1;
+}END_OF_MAIN();
