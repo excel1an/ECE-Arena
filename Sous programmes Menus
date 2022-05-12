@@ -1,327 +1,556 @@
+#include "header.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <allegro.h>
 
-void effacEcran()
+
+
+void effacEcran() ///effacer l'écran et passer au suivant
     {
-        int i=0,j=0;
-
-        for (j=0;j<651;j++)
-                 {
-                     for (i=0;i<1201;i++)
-                     {
-                         //putpixel(screen,i,j,makecol(0,0,0));
-                         clear(screen);
-
-                     }
-                 }
-        rest(1000);
+        clear(screen);
+        rest(500);
     }
 
-
-int main()
+int menujoueur() /// premier menu pour choisir le nombre de joueurs
 {
-    allegro_init();//initialisation
+    int nbjoueurs =0;
+    int i=0,j=0;
+
+    while(!((nbjoueurs==2)||(nbjoueurs==3)||(nbjoueurs==4)))
+            {
+
+                            textprintf_ex(screen,font,160,40,makecol(245,180,25),-1, " 000000    00   00   00       00       000000   00000000            0000   00        0000    000000   00  00 ");
+                            textprintf_ex(screen,font,160,50,makecol(245,180,25),-1, " 00   00   00   00   00       00       00          00             000      00       00  00   00   0   00  00 ");
+                            textprintf_ex(screen,font,160,60,makecol(245,180,25),-1, " 00   00   00   00   00       00       00          00            00        00       00  00   00       00  00 ");
+                            textprintf_ex(screen,font,160,70,makecol(245,180,25),-1, " 000000    00   00   00       00       000000      00            00        00       000000   000000   000000 ");
+                            textprintf_ex(screen,font,160,80,makecol(245,180,25),-1, " 00   00   00   00   00       00       00          00            00        00       00  00       00   00  00 ");
+                            textprintf_ex(screen,font,160,90,makecol(245,180,25),-1, " 00   00   00   00   00       00       00          00             000      00       00  00   0   00   00  00 ");
+                            textprintf_ex(screen,font,160,100,makecol(245,180,25),-1," 000000    0000000   000000   000000   000000      00               0000   000000   00  00   000000   00  00 ");
+
+                            textprintf_ex(screen,font,410,200,makecol(230,230,230),-1," Selectionnez le nombre de joueurs de la partie ");
+
+
+                        ///Boutons nombre de joueurs
+
+
+                            ///Rect(screen,X1,Y1,X2,Y2, makecol()
+
+                            ///rectangle n°2
+
+                            rect(screen,100,300,300,500, makecol(116,195,101));
+                            rect(screen,101,301,299,499, makecol(116,195,101));
+                            rect(screen,102,302,298,498, makecol(116,195,101));
+                            rect(screen,103,303,297,497, makecol(116,195,101));
+                            rect(screen,104,304,296,496, makecol(116,195,101));
+                            rect(screen,105,305,295,495, makecol(116,195,101));
+
+                            ///rectangle n°3
+
+                            rect(screen,500,300,700,500, makecol(235,140,35));
+                            rect(screen,501,301,699,499, makecol(235,140,35));
+                            rect(screen,502,302,698,498, makecol(235,140,35));
+                            rect(screen,503,303,697,497, makecol(235,140,35));
+                            rect(screen,504,304,696,496, makecol(235,140,35));
+                            rect(screen,505,305,695,495, makecol(235,140,35));
+
+                            ///rectangle n°4
+
+                            rect(screen,900,300,1100,500, makecol(70,190,255));
+                            rect(screen,901,301,1099,499, makecol(70,190,255));
+                            rect(screen,902,302,1098,498, makecol(70,190,255));
+                            rect(screen,903,303,1097,497, makecol(70,190,255));
+                            rect(screen,904,304,1096,496, makecol(70,190,255));
+                            rect(screen,905,305,1095,495, makecol(70,190,255));
+
+                            ///numéros
+
+                            textprintf_ex(screen,font,200,400,makecol(116,195,101),-1,"2");
+                            textprintf_ex(screen,font,600,400,makecol(235,140,35),-1,"3");
+                            textprintf_ex(screen,font,1000,400,makecol(70,190,255),-1,"4");
+
+
+                            ///rectangle de selection
+                            rect(screen,400,550,800,600,makecol(255,255,255));
+
+
+
+
+
+                        ///Test clic
+
+                                ///bouton 2
+
+                                if ((mouse_x<300)&&(mouse_x>100)&&(mouse_y<500)&&(mouse_y>300))
+                                {
+                                    if(mouse_b&1 || mouse_b&2)
+                                    {
+                                        textprintf_ex(screen,font,510,570,makecol(220,220,220),-1," Partie de 2  joueurs");
+
+                                        nbjoueurs = 2;
+                                        rest(1500);
+                                        effacEcran();
+                                    }
+                                }
+
+                                ///bouton 3
+
+                                if ((mouse_x<700)&&(mouse_x>500)&&(mouse_y<500)&&(mouse_y>300))
+                                {
+                                    if(mouse_b&1)
+                                    {
+                                        textprintf_ex(screen,font,510,570,makecol(220,220,220),-1," Partie de  3  joueurs");
+
+                                        nbjoueurs = 3;
+                                        rest(1500);
+                                        effacEcran();
+                                    }
+                                }
+
+                                ///bouton 4
+
+                                if ((mouse_x<1100)&&(mouse_x>900)&&(mouse_y<500)&&(mouse_y>300))
+                                {
+                                    if(mouse_b&1)
+                                    {
+                                        textprintf_ex(screen,font,510,570,makecol(220,220,220),-1," Partie de  4 joueurs");
+
+                                        nbjoueurs = 4;
+                                        rest(1500);
+                                        effacEcran();
+                                    }
+                                }
+
+            }return nbjoueurs;
+}
+
+
+void menuclasse(int nbjoueurs)
+{
     int i=0;
-    int nbjoueurs =0; ///changer car sur cet écran on connait le nombre de joueurs
-    int combattant =0;
-    int selection =0;
-    ///BITMAP* classes; /// nouveau bitmap par rapport au menu joueurs, voir pour l'importation des 4 images (voire 5 avec bouton valider)
+    int selection = 0;
+    int combattant = 0;
 
-    install_keyboard();//pour utiliser le clavier
-    install_mouse();//pour pouvoir utiliser la souris
-
-    set_color_depth(desktop_color_depth());//Couleur
-    /* Maintenant, on déclare notre sprite de type pointeur vers BITMAP. Attention, il s’agit
-        bien d’un pointeur ! Faites attention de ne pas oublier « * » */
-
-    if ((set_gfx_mode(GFX_AUTODETECT_WINDOWED,1200,650,0,0))!=0)
+    for(i=1;i<=nbjoueurs;i++)
     {
-        allegro_message("Probleme de mode graphique");
-        allegro_exit();
-        exit(EXIT_FAILURE);
+            selection= 0;
+
+            while(!(selection==1))
+                {
+
+                        ///Boutons Choix des personnages
+
+                        rect(screen,300,50,900,125, makecol(255,255,255));
+
+                        textprintf_ex(screen,font,450,90,makecol(240,240,240),-1," Selectionnez votre classe de combattant ");
+                        textprintf_ex(screen,font,560,70,makecol(255,255,255),-1," JOUEUR %d",i);
+
+                        ///Rect(screen,X1,Y1,X2,Y2, makecol()
+
+                        ///rectangle n°1
+
+                        rect(screen,50,200,250,500, makecol(116,195,101));
+                        textprintf_ex(screen,font,110,180,makecol(116,195,101),-1,"COMBATTANT 1");
+
+
+                        ///rectangle n°2
+
+                        rect(screen,350,200,550,500, makecol(235,140,35));
+                        textprintf_ex(screen,font,410,180,makecol(235,140,35),-1,"COMBATTANT 2");
+
+
+                        ///rectangle n°3
+
+                        rect(screen,650,200,850,500, makecol(70,190,255));
+                        textprintf_ex(screen,font,710,180,makecol(70,190,255),-1,"COMBATTANT 3");
+
+                        ///rectangle n°4
+
+                        rect(screen,950,200,1150,500, makecol(70,190,255));
+                        textprintf_ex(screen,font,1010,180,makecol(70,190,255),-1,"COMBATTANT 4");
+
+
+
+
+                        ///rectangle de selection
+                        rect(screen,400,550,800,600,makecol(255,255,255));
+                        rectfill(screen,740,560,780,585,makecol(90,240,90));
+                        textprintf_ex(screen,font,745,570,makecol(255,255,255),-1," OK");
+
+
+
+
+
+                    ///Test clic personnages
+
+                            ///bouton 1
+
+                            if ((mouse_x<250)&&(mouse_x>50)&&(mouse_y<500)&&(mouse_y>200))
+                            {
+                                if(mouse_b&1 || mouse_b&2)
+                                {
+                                    textprintf_ex(screen,font,430,570,makecol(255,255,255),-1," APPUYEZ POUR VALIDER COMBATTANT 1 : ");
+
+                                    combattant = 1;
+                                }
+                            }
+
+                            ///bouton 2
+
+                            if ((mouse_x<550)&&(mouse_x>350)&&(mouse_y<500)&&(mouse_y>200))
+                            {
+                                if(mouse_b&1)
+                                {
+                                    textprintf_ex(screen,font,430,570,makecol(255,255,255),-1," APPUYEZ POUR VALIDER COMBATTANT 2 : ");
+                                    combattant = 2;
+                                }
+                            }
+
+                            ///bouton 3
+
+                            if ((mouse_x<850)&&(mouse_x>650)&&(mouse_y<500)&&(mouse_y>200))
+                            {
+                                if(mouse_b&1)
+                                {
+                                    textprintf_ex(screen,font,430,570,makecol(255,255,255),-1," APPUYEZ POUR VALIDER COMBATTANT 3 : ");
+
+                                    combattant = 3;
+                                }
+                            }
+
+                            ///bouton 4
+
+                            if ((mouse_x<1150)&&(mouse_x>950)&&(mouse_y<500)&&(mouse_y>200))
+                            {
+                                if(mouse_b&1)
+                                {
+                                    textprintf_ex(screen,font,430,570,makecol(255,255,255),-1," APPUYEZ POUR VALIDER COMBATTANT 4 : ");
+
+                                    combattant = 4;
+                                }
+                            }
+
+
+                    ///Test clic Validation : 740,560,780,585
+
+                            ///combattant 1 choisi
+
+                            if (combattant==1)
+                            {
+
+                                    if ((mouse_x<780)&&(mouse_x>740)&&(mouse_y<585)&&(mouse_y>560))
+                                    {
+                                        if(mouse_b&1)
+                                        {
+                                            rect(screen,49,199,251,501, makecol(116,195,101));
+                                            rest(110);
+                                            rect(screen,48,198,252,502, makecol(116,195,101));
+                                            rest(100);
+                                            rect(screen,47,197,253,503, makecol(116,195,101));
+                                            rest(90);
+                                            rect(screen,46,196,254,504, makecol(116,195,101));
+                                            rest(80);
+                                            rect(screen,45,195,255,505, makecol(116,195,101));
+                                            rest(70);
+                                            rect(screen,44,194,256,506, makecol(116,195,101));
+                                            rest(40);
+                                            rect(screen,43,193,257,507, makecol(116,195,101));
+                                            rest(30);
+                                            rect(screen,42,192,258,508, makecol(116,195,101));
+                                            selection = 1;
+
+                                            /// effacer le  nouveau rectangle
+                                            rest(1500);
+                                            rect(screen,49,199,251,501, makecol(0,0,0));
+                                            rect(screen,48,198,252,502, makecol(0,0,0));
+                                            rect(screen,47,197,253,503, makecol(0,0,0));
+                                            rect(screen,46,196,254,504, makecol(0,0,0));
+                                            rect(screen,45,195,255,505, makecol(0,0,0));
+                                            rect(screen,44,194,256,506, makecol(0,0,0));
+                                            rect(screen,43,193,257,507, makecol(0,0,0));
+                                            rect(screen,42,192,258,508, makecol(0,0,0));
+
+
+
+                                        }
+                                    }
+                            }
+
+                            ///combattant 2 choisi
+
+                            if(combattant==2)
+                            {
+
+                                    if ((mouse_x<780)&&(mouse_x>740)&&(mouse_y<585)&&(mouse_y>560))
+                                    {
+                                        if(mouse_b&1)
+                                        {
+                                            rect(screen,349,199,551,501, makecol(235,140,35));
+                                            rest(110);
+                                            rect(screen,348,198,552,502, makecol(235,140,35));
+                                            rest(100);
+                                            rect(screen,347,197,553,503, makecol(235,140,35));
+                                            rest(90);
+                                            rect(screen,346,196,554,504, makecol(235,140,35));
+                                            rest(80);
+                                            rect(screen,345,195,555,505, makecol(235,140,35));
+                                            rest(70);
+                                            rect(screen,344,194,556,506, makecol(235,140,35));
+                                            rest(40);
+                                            rect(screen,343,193,557,507, makecol(235,140,35));
+                                            rest(30);
+                                            rect(screen,342,192,558,508, makecol(235,140,35));
+                                            selection = 1;
+
+                                            /// effacer le  nouveau rectangle
+                                            rest(1500);
+                                            rect(screen,349,199,551,501, makecol(0,0,0));
+                                            rect(screen,348,198,552,502, makecol(0,0,0));
+                                            rect(screen,347,197,553,503, makecol(0,0,0));
+                                            rect(screen,346,196,554,504, makecol(0,0,0));
+                                            rect(screen,345,195,555,505, makecol(0,0,0));
+                                            rect(screen,344,194,556,506, makecol(0,0,0));
+                                            rect(screen,343,193,557,507, makecol(0,0,0));
+                                            rect(screen,342,192,558,508, makecol(0,0,0));
+                                        }
+                                    }
+                            }
+
+
+
+                            ///combattant 3 choisi
+
+                            if (combattant==3)
+                            {
+
+                                    if ((mouse_x<780)&&(mouse_x>740)&&(mouse_y<585)&&(mouse_y>560))
+                                    {
+                                        if(mouse_b&1)
+                                        {
+                                            rect(screen,649,199,851,501, makecol(70,190,255));
+                                            rest(110);
+                                            rect(screen,648,198,852,502, makecol(70,190,255));
+                                            rest(100);
+                                            rect(screen,647,197,853,503, makecol(70,190,255));
+                                            rest(90);
+                                            rect(screen,646,196,854,504, makecol(70,190,255));
+                                            rest(80);
+                                            rect(screen,645,195,855,505, makecol(70,190,255));
+                                            rest(70);
+                                            rect(screen,644,194,856,506, makecol(70,190,255));
+                                            rest(40);
+                                            rect(screen,643,193,857,507, makecol(70,190,255));
+                                            rest(30);
+                                            rect(screen,642,192,858,508, makecol(70,190,255));
+                                            selection = 1;
+
+                                            /// effacer le  nouveau rectangle
+                                            rest(1500);
+                                            rect(screen,649,199,851,501, makecol(0,0,0));
+                                            rect(screen,648,198,852,502, makecol(0,0,0));
+                                            rect(screen,647,197,853,503, makecol(0,0,0));
+                                            rect(screen,646,196,854,504, makecol(0,0,0));
+                                            rect(screen,645,195,855,505, makecol(0,0,0));
+                                            rect(screen,644,194,856,506, makecol(0,0,0));
+                                            rect(screen,643,193,857,507, makecol(0,0,0));
+                                            rect(screen,642,192,858,508, makecol(0,0,0));
+
+                                        }
+                                    }
+                            }
+
+                            ///combattant 4 choisi
+
+                            if (combattant)
+                            {
+
+                                    if ((mouse_x<780)&&(mouse_x>740)&&(mouse_y<585)&&(mouse_y>560))
+                                    {
+                                        if(mouse_b&1)
+                                        {
+                                            rect(screen,949,199,1151,501, makecol(70,190,255));
+                                            rest(110);
+                                            rect(screen,948,198,1152,502, makecol(70,190,255));
+                                            rest(100);
+                                            rect(screen,947,197,1153,503, makecol(70,190,255));
+                                            rest(90);
+                                            rect(screen,946,196,1154,504, makecol(70,190,255));
+                                            rest(80);
+                                            rect(screen,945,195,1155,505, makecol(70,190,255));
+                                            rest(70);
+                                            rect(screen,944,194,1156,506, makecol(70,190,255));
+                                            rest(40);
+                                            rect(screen,943,193,1157,507, makecol(70,190,255));
+                                            rest(30);
+                                            rect(screen,942,192,1158,508, makecol(70,190,255));
+                                            selection = 1;
+
+                                            /// effacer le  nouveau rectangle
+                                            rest(1500);
+                                            rect(screen,949,199,1151,501, makecol(0,0,0));
+                                            rect(screen,948,198,1152,502, makecol(0,0,0));
+                                            rect(screen,947,197,1153,503, makecol(0,0,0));
+                                            rect(screen,946,196,1154,504, makecol(0,0,0));
+                                            rect(screen,945,195,1155,505, makecol(0,0,0));
+                                            rect(screen,944,194,1156,506, makecol(0,0,0));
+                                            rect(screen,943,193,1157,507, makecol(0,0,0));
+                                            rect(screen,942,192,1158,508, makecol(0,0,0));
+
+                                        }
+                                    }
+                            }
+                }
+                 effacEcran();
+
+
+
+
     }
+}
+
+void ecranchargement()
+{
+
+        textprintf_ex(screen,font,500,300,makecol(245,180,25),-1,"Chargement de la partie ");
+        rect(screen,300,400,900,420,makecol(255,255,255));
+
+
+        /// premiere partie rapide
+
+        rectfill(screen,301,401,305,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+5,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+10,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+15,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+20,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+25,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+30,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+35,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+40,419,makecol(0,255,0));
+        rest(20);
+        rectfill(screen,301,401,305+45,419,makecol(0,255,0));
+        rest(20);
+        rectfill(screen,301,401,305+50,419,makecol(0,255,0));
+        rest(20);
+        rectfill(screen,301,401,305+55,419,makecol(0,255,0));
+        rest(20);
+        rectfill(screen,301,401,305+60,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+65,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+70,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+75,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+80,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+85,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+90,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+95,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+100,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+105,419,makecol(0,255,0));
+        rest(10);
+        rectfill(screen,301,401,305+110,419,makecol(0,255,0));
+        rest(10);
+        rectfill(screen,301,401,305+115,419,makecol(0,255,0));
+        rest(10);
+
+        ///deuxieme partie plus lente
+
+        rectfill(screen,301,401,305+125,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+135,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+145,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+155,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+165,419,makecol(0,255,0));
+        rest(200);
+        rectfill(screen,301,401,305+175,419,makecol(0,255,0));
+        rest(200);
+        rectfill(screen,301,401,305+185,419,makecol(0,255,0));
+        rest(200);
+        rectfill(screen,301,401,305+195,419,makecol(0,255,0));
+        rest(200);
+        rectfill(screen,301,401,305+205,419,makecol(0,255,0));
+        rest(200);
+        rectfill(screen,301,401,305+215,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+225,419,makecol(0,255,0));
+        rest(300);
+        rectfill(screen,301,401,305+235,419,makecol(0,255,0));
+        rest(400);
+
+        ///troisieme partie lente
+
+        rectfill(screen,301,401,305+255,419,makecol(0,255,0));
+        rest(400);
+        rectfill(screen,301,401,305+295,419,makecol(0,255,0));
+        rest(700);
+        rectfill(screen,301,401,305+375,419,makecol(0,255,0));
+        rest(500);
+        rectfill(screen,301,401,305+390,419,makecol(0,255,0));
+        rest(200);
+        rectfill(screen,301,401,305+410,419,makecol(0,255,0));
+        rest(200);
+
+        ///quatrieme partie rapide
+        rectfill(screen,301,401,305+420,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+430,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+440,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+450,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+460,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+470,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+480,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+490,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+500,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+510,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+520,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+530,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+540,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+550,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+560,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+570,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+575,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+580,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+585,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+590,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+594,419,makecol(0,255,0));
+        rest(500);
+        effacEcran();
+
+
+}
 
-    show_mouse(screen);
 
-
-
-        while(selection!=1)
-        {
-
-                ///Boutons Choix des personnages
-
-                rect(screen,300,50,900,125, makecol(255,255,255));
-                textprintf_ex(screen,font,560,70,makecol(255,255,255),-1," JOUEUR 1");
-                textprintf_ex(screen,font,450,90,makecol(240,240,240),-1," Selectionnez votre classe de combattant ");
-
-                ///Rect(screen,X1,Y1,X2,Y2, makecol()
-
-                ///rectangle n°1
-
-                rect(screen,50,200,250,500, makecol(116,195,101));
-                textprintf_ex(screen,font,110,180,makecol(116,195,101),-1,"COMBATTANT 1");
-
-
-                ///rectangle n°2
-
-                rect(screen,350,200,550,500, makecol(235,140,35));
-                textprintf_ex(screen,font,410,180,makecol(235,140,35),-1,"COMBATTANT 2");
-
-
-                ///rectangle n°3
-
-                rect(screen,650,200,850,500, makecol(70,190,255));
-                textprintf_ex(screen,font,710,180,makecol(70,190,255),-1,"COMBATTANT 3");
-
-                ///rectangle n°4
-
-                rect(screen,950,200,1150,500, makecol(70,190,255));
-                textprintf_ex(screen,font,1010,180,makecol(70,190,255),-1,"COMBATTANT 4");
-
-
-
-
-                ///rectangle de selection
-                rect(screen,400,550,800,600,makecol(255,255,255));
-                //textprintf_ex(screen,font,430,570,makecol(255,255,255),-1," APPUYEZ POUR VALIDER COMBATTANT 1 : ");
-                rectfill(screen,740,560,780,585,makecol(90,240,90));
-                textprintf_ex(screen,font,745,570,makecol(255,255,255),-1," OK");
-
-
-
-
-
-            ///Test clic personnages
-
-
-                    ///bouton 1
-
-                    if ((mouse_x<250)&&(mouse_x>50)&&(mouse_y<500)&&(mouse_y>200))
-                    {
-                        if(mouse_b&1 || mouse_b&2)
-                        {
-                            combattant = 1;
-                            textprintf_ex(screen,font,430,570,makecol(255,255,255),-1," APPUYEZ POUR VALIDER COMBATTANT %d : ", combattant);
-                            rest(5000);
-                            clear_display(screen);
-
-                        }
-                    }
-
-                    ///bouton 2
-
-                    if ((mouse_x<550)&&(mouse_x>350)&&(mouse_y<500)&&(mouse_y>200))
-                    {
-                        if(mouse_b&1)
-                        {
-                            combattant = 2;
-                            textprintf_ex(screen,font,430,570,makecol(255,255,255),-1," APPUYEZ POUR VALIDER COMBATTANT % : ", combattant);
-                            rest(2000);
-                            rectfill(screen,230,170,431,571,makecol(255,255,255)).
-                        }
-
-                    }
-
-                    ///bouton 3
-
-                    if ((mouse_x<850)&&(mouse_x>650)&&(mouse_y<500)&&(mouse_y>200))
-                    {
-                        if(mouse_b&1)
-                        {
-                            combattant = 3;
-                            textprintf_ex(screen,font,430,570,makecol(255,255,255),-1," APPUYEZ POUR VALIDER COMBATTANT % : ", combattant);
-                            rest(5000);
-                            clear_display(screen);
-                        }
-                    }
-
-                    ///bouton 4
-
-                    if ((mouse_x<1150)&&(mouse_x>950)&&(mouse_y<500)&&(mouse_y>200))
-                    {
-                        if(mouse_b&1)
-                        {
-                            combattant = 4;
-                            textprintf_ex(screen,font,430,570,makecol(255,255,255),-1," APPUYEZ POUR VALIDER COMBATTANT % : ", combattant);
-                            rest(5000);
-                            clear_display(screen);
-                        }
-                    }
-
-
-            ///Test clic Validation : 740,560,780,585
-
-                    ///combattant 1 choisi
-
-                    if (combattant==1)
-                    {
-
-                            if ((mouse_x<780)&&(mouse_x>740)&&(mouse_y<585)&&(mouse_y>560))
-                            {
-                                if(mouse_b&1)
-                                {
-                                    rect(screen,49,199,251,501, makecol(116,195,101));
-                                    rest(110);
-                                    rect(screen,48,198,252,502, makecol(116,195,101));
-                                    rest(100);
-                                    rect(screen,47,197,253,503, makecol(116,195,101));
-                                    rest(90);
-                                    rect(screen,46,196,254,504, makecol(116,195,101));
-                                    rest(80);
-                                    rect(screen,45,195,255,505, makecol(116,195,101));
-                                    rest(70);
-                                    rect(screen,44,194,256,506, makecol(116,195,101));
-                                    rest(40);
-                                    rect(screen,43,193,257,507, makecol(116,195,101));
-                                    rest(30);
-                                    rect(screen,42,192,258,508, makecol(116,195,101));
-                                    selection = 1;
-
-                                    /// effacer le  nouveau rectangle
-                                    /*rest(1500);
-                                    rect(screen,49,199,251,501, makecol(0,0,0));
-                                    rect(screen,48,198,252,502, makecol(0,0,0));
-                                    rect(screen,47,197,253,503, makecol(0,0,0));
-                                    rect(screen,46,196,254,504, makecol(0,0,0));
-                                    rect(screen,45,195,255,505, makecol(0,0,0));
-                                    rect(screen,44,194,256,506, makecol(0,0,0));
-                                    rect(screen,43,193,257,507, makecol(0,0,0));
-                                    rect(screen,42,192,258,508, makecol(0,0,0));*/
-
-                                }
-                            }
-                    }
-
-                    ///combattant 2 choisi
-
-                    if(combattant==2)
-                    {
-
-                            if ((mouse_x<780)&&(mouse_x>740)&&(mouse_y<585)&&(mouse_y>560))
-                            {
-                                if(mouse_b&1)
-                                {
-                                    rect(screen,349,199,551,501, makecol(235,140,35));
-                                    rest(110);
-                                    rect(screen,348,198,552,502, makecol(235,140,35));
-                                    rest(100);
-                                    rect(screen,347,197,553,503, makecol(235,140,35));
-                                    rest(90);
-                                    rect(screen,346,196,554,504, makecol(235,140,35));
-                                    rest(80);
-                                    rect(screen,345,195,555,505, makecol(235,140,35));
-                                    rest(70);
-                                    rect(screen,344,194,556,506, makecol(235,140,35));
-                                    rest(40);
-                                    rect(screen,343,193,557,507, makecol(235,140,35));
-                                    rest(30);
-                                    rect(screen,342,192,558,508, makecol(235,140,35));
-                                    selection = 1;
-
-                                    /// effacer le  nouveau rectangle
-                                    rest(1500);
-                                    rect(screen,349,199,551,501, makecol(0,0,0));
-                                    rect(screen,348,198,552,502, makecol(0,0,0));
-                                    rect(screen,347,197,553,503, makecol(0,0,0));
-                                    rect(screen,346,196,554,504, makecol(0,0,0));
-                                    rect(screen,345,195,555,505, makecol(0,0,0));
-                                    rect(screen,344,194,556,506, makecol(0,0,0));
-                                    rect(screen,343,193,557,507, makecol(0,0,0));
-                                    rect(screen,342,192,558,508, makecol(0,0,0));
-                                }
-                            }
-                    }
-
-
-
-                    ///combattant 3 choisi
-
-                    if (combattant==3)
-                    {
-
-                            if ((mouse_x<780)&&(mouse_x>740)&&(mouse_y<585)&&(mouse_y>560))
-                            {
-                                if(mouse_b&1)
-                                {
-                                    rect(screen,649,199,851,501, makecol(70,190,255));
-                                    rest(110);
-                                    rect(screen,648,198,852,502, makecol(70,190,255));
-                                    rest(100);
-                                    rect(screen,647,197,853,503, makecol(70,190,255));
-                                    rest(90);
-                                    rect(screen,646,196,854,504, makecol(70,190,255));
-                                    rest(80);
-                                    rect(screen,645,195,855,505, makecol(70,190,255));
-                                    rest(70);
-                                    rect(screen,644,194,856,506, makecol(70,190,255));
-                                    rest(40);
-                                    rect(screen,643,193,857,507, makecol(70,190,255));
-                                    rest(30);
-                                    rect(screen,642,192,858,508, makecol(70,190,255));
-                                    selection = 1;
-
-                                    /// effacer le  nouveau rectangle
-                                    rest(1500);
-                                    rect(screen,649,199,851,501, makecol(0,0,0));
-                                    rect(screen,648,198,852,502, makecol(0,0,0));
-                                    rect(screen,647,197,853,503, makecol(0,0,0));
-                                    rect(screen,646,196,854,504, makecol(0,0,0));
-                                    rect(screen,645,195,855,505, makecol(0,0,0));
-                                    rect(screen,644,194,856,506, makecol(0,0,0));
-                                    rect(screen,643,193,857,507, makecol(0,0,0));
-                                    rect(screen,642,192,858,508, makecol(0,0,0));
-
-
-                                }
-                            }
-                    }
-
-                    ///combattant 4 choisi
-
-                    if (combattant)
-                    {
-
-                            if ((mouse_x<780)&&(mouse_x>740)&&(mouse_y<585)&&(mouse_y>560))
-                            {
-                                if(mouse_b&1)
-                                {
-                                    rect(screen,949,199,1151,501, makecol(70,190,255));
-                                    rest(110);
-                                    rect(screen,948,198,1152,502, makecol(70,190,255));
-                                    rest(100);
-                                    rect(screen,947,197,1153,503, makecol(70,190,255));
-                                    rest(90);
-                                    rect(screen,946,196,1154,504, makecol(70,190,255));
-                                    rest(80);
-                                    rect(screen,945,195,1155,505, makecol(70,190,255));
-                                    rest(70);
-                                    rect(screen,944,194,1156,506, makecol(70,190,255));
-                                    rest(40);
-                                    rect(screen,943,193,1157,507, makecol(70,190,255));
-                                    rest(30);
-                                    rect(screen,942,192,1158,508, makecol(70,190,255));
-                                    selection = 1;
-
-                                    /// effacer le  nouveau rectangle
-                                    rest(1500);
-                                    rect(screen,949,199,1151,501, makecol(0,0,0));
-                                    rect(screen,948,198,1152,502, makecol(0,0,0));
-                                    rect(screen,947,197,1153,503, makecol(0,0,0));
-                                    rect(screen,946,196,1154,504, makecol(0,0,0));
-                                    rect(screen,945,195,1155,505, makecol(0,0,0));
-                                    rect(screen,944,194,1156,506, makecol(0,0,0));
-                                    rect(screen,943,193,1157,507, makecol(0,0,0));
-                                    rect(screen,942,192,1158,508, makecol(0,0,0));
-
-
-
-                                }
-                            }
-                    }
-
-
-
-
-    }return 0;
-}END_OF_MAIN();
