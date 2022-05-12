@@ -1,0 +1,170 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <allegro.h>
+
+int main()
+{
+    allegro_init();///initialisation
+    int i=0,j=0;
+    int joueurs =0;
+
+    install_keyboard(); ///pour utiliser le clavier
+    install_mouse();   ///pour pouvoir utiliser la souris
+
+    set_color_depth(desktop_color_depth());///Couleur
+    /* Maintenant, on déclare notre sprite de type pointeur vers BITMAP. Attention, il s’agit
+        bien d’un pointeur ! Faites attention de ne pas oublier « * » */
+
+    if ((set_gfx_mode(GFX_AUTODETECT_WINDOWED,1200,650,0,0))!=0)
+    {
+        allegro_message("Probleme de mode graphique");
+        allegro_exit();
+        exit(EXIT_FAILURE);
+    }
+
+    show_mouse(screen);
+
+
+        textprintf_ex(screen,font,500,300,makecol(245,180,25),-1,"Chargement de la partie ");
+        rect(screen,300,400,900,420,makecol(255,255,255));
+
+
+        /// premiere partie rapide
+
+        rectfill(screen,301,401,305,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+5,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+10,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+15,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+20,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+25,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+30,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+35,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+40,419,makecol(0,255,0));
+        rest(20);
+        rectfill(screen,301,401,305+45,419,makecol(0,255,0));
+        rest(20);
+        rectfill(screen,301,401,305+50,419,makecol(0,255,0));
+        rest(20);
+        rectfill(screen,301,401,305+55,419,makecol(0,255,0));
+        rest(20);
+        rectfill(screen,301,401,305+60,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+65,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+70,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+75,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+80,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+85,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+90,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+95,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+100,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+105,419,makecol(0,255,0));
+        rest(10);
+        rectfill(screen,301,401,305+110,419,makecol(0,255,0));
+        rest(10);
+        rectfill(screen,301,401,305+115,419,makecol(0,255,0));
+        rest(10);
+
+        ///deuxieme partie plus lente
+
+        rectfill(screen,301,401,305+125,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+135,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+145,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+155,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+165,419,makecol(0,255,0));
+        rest(200);
+        rectfill(screen,301,401,305+175,419,makecol(0,255,0));
+        rest(200);
+        rectfill(screen,301,401,305+185,419,makecol(0,255,0));
+        rest(200);
+        rectfill(screen,301,401,305+195,419,makecol(0,255,0));
+        rest(200);
+        rectfill(screen,301,401,305+205,419,makecol(0,255,0));
+        rest(200);
+        rectfill(screen,301,401,305+215,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+225,419,makecol(0,255,0));
+        rest(300);
+        rectfill(screen,301,401,305+235,419,makecol(0,255,0));
+        rest(400);
+
+        ///troisieme partie lente
+
+        rectfill(screen,301,401,305+255,419,makecol(0,255,0));
+        rest(400);
+        rectfill(screen,301,401,305+295,419,makecol(0,255,0));
+        rest(700);
+        rectfill(screen,301,401,305+375,419,makecol(0,255,0));
+        rest(500);
+        rectfill(screen,301,401,305+390,419,makecol(0,255,0));
+        rest(200);
+        rectfill(screen,301,401,305+410,419,makecol(0,255,0));
+        rest(200);
+
+        ///quatrieme partie rapide
+        rectfill(screen,301,401,305+420,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+430,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+440,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+450,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+460,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+470,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+480,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+490,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+500,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+510,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+520,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+530,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+540,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+550,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+560,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+570,419,makecol(0,255,0));
+        rest(50);
+        rectfill(screen,301,401,305+575,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+580,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+585,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+590,419,makecol(0,255,0));
+        rest(100);
+        rectfill(screen,301,401,305+594,419,makecol(0,255,0));
+        rest(500);
+        effaceEcran();
+
+
+    return 0;
+}END_OF_MAIN();
