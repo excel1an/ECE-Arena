@@ -1,0 +1,161 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct pile
+{
+    char pileElement[10];
+    int indiceSommet;
+    int nbPlaces;
+}t_pile;
+
+void init_Pile(t_pile* pile)
+{
+    pile->indiceSommet=0;
+    pile->nbPlaces=4;
+}
+int estVide(t_pile* podium)
+{
+    if(podium->indiceSommet==0)
+    {
+        printf("La pile est vide\n");
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+int estPleine(t_pile* podium)
+{
+    if(podium->indiceSommet==podium->nbPlaces)
+    {
+        printf("La pile est pleine\n");
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+char empiler(t_pile* podium, char joueur[20])
+{
+    int i;
+
+    if(estPleine(podium)==1)
+    {
+        printf("Le podium est plein, impossible de rajouter un joueur\n");
+    }
+    else
+    {
+        podium->pileElement[podium->indiceSommet]=joueur;
+        (podium->indiceSommet)++;
+        printf("%d e joueur elimine : %s\n", podium->indiceSommet, joueur);
+        return joueur;
+    }
+}
+
+char depiler(t_pile* podium)
+{
+    char joueur[20];
+    if (estVide(podium)!=1)
+    {
+        joueur[20]=podium->pileElement[podium->indiceSommet];
+        (podium->indiceSommet)--;
+    }
+}
+
+void menu(t_pile* podium)
+{
+    printf("---------------MENU----------------");
+    printf("\n");
+    printf("1. Rejouer la partie\n");
+    printf("2. Jouer une autre partie\n");
+    printf("3. Quitter\n");
+}
+
+int main()
+{
+    char joueur1[20], joueur2[20], joueur3[20], joueur4[20];
+    int classement, choix, nbJoueurs;
+    t_pile podium;
+    int i;
+
+    init_Pile(&podium);
+
+    do
+    {
+        printf("Saisir le nombre de joueurs : \n");
+        scanf("%d", &nbJoueurs);
+    }while(nbJoueurs<2 || nbJoueurs>4);
+
+    if(nbJoueurs==2)
+    {
+        printf("Saisir le nom du 1er joueur elimine : \n");
+        scanf("%s", joueur1);
+        empiler(&podium, joueur1);
+        printf("Saisir le nom du 2eme joueur elimine : \n");
+        scanf("%s", joueur2);
+        empiler(&podium, joueur2);
+        printf("\n");
+
+        printf("Classement : \n");
+        printf("\n");
+        printf("Le gagnant est : %s\n", joueur2);
+        depiler(&podium);
+        printf("Le deuxieme est : %s\n", joueur1);
+        depiler(&podium);
+    }
+    else if (nbJoueurs==3)
+    {
+        printf("Saisir le nom du 1er joueur elimine : \n");
+        scanf("%s", joueur1);
+        empiler(&podium, joueur1);
+        printf("Saisir le nom du 2eme joueur elimine : \n");
+        scanf("%s", joueur2);
+        empiler(&podium, joueur2);
+        printf("Saisir le nom du 3eme joueur elimine : \n");
+        scanf("%s", joueur3);
+        empiler(&podium, joueur3);
+        printf("\n");
+        printf("Classement : \n");
+        printf("\n");
+        printf("Le gagnant est : %s\n", joueur3);
+        depiler(&podium);
+        printf("Le deuxieme est : %s\n", joueur2);
+        depiler(&podium);
+        printf("Le troisieme est : %s\n", joueur1);
+        depiler(&podium);
+    }
+    else if (nbJoueurs==4)
+    {
+        printf("Saisir le nom du 1er joueur elimine : \n");
+        scanf("%s", joueur1);
+        empiler(&podium, joueur1);
+        printf("Saisir le nom du 2eme joueur elimine : \n");
+        scanf("%s", joueur2);
+        empiler(&podium, joueur2);
+        printf("Saisir le nom du 3eme joueur elimine : \n");
+        scanf("%s", joueur3);
+        empiler(&podium, joueur3);
+        printf("Saisir le nom du 4eme joueur elimine : \n");
+        scanf("%s", joueur4);
+        empiler(&podium, joueur4);
+        printf("\n");
+        printf("Classement : \n");
+        printf("\n");
+        printf("Le gagnant est : %s\n", joueur4);
+        depiler(&podium);
+        printf("Le deuxieme est : %s\n", joueur3);
+        depiler(&podium);
+        printf("Le troisieme est : %s\n", joueur2);
+        depiler(&podium);
+        printf("Le quatrieme est : %s\n", joueur1);
+        depiler(&podium);
+    }
+    printf("\n\n");
+    menu(&podium);
+
+    return 0;
+}
