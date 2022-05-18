@@ -23,26 +23,38 @@ int main()
     ///Declarations
 
     int i;
+    int attaque=0;
+    int joueur_suivant=0;
+
+    install_keyboard();//pour utiliser le clavier
+    install_mouse();//pour pouvoir utiliser la souris
+
+    show_mouse(screen);
 
     ///Affichage pour chaque joueur
 
         while(!key[KEY_ESC])
         {
             ///rectangles
-            rect(screen,770,10,1190,640,makecol(255,255,0));
-            rect(screen,770,10,1190,200,makecol(255,255,0));
+            rect(screen,770,10,1190,640,makecol(237,158,110));
+            rect(screen,770,10,1190,200,makecol(237,158,110));
+            rect(screen,770,10,1190,600,makecol(237,158,110));
+            rect(screen,806,610,826,630,makecol(237,158,110));
+
 
             ///cercles pour joueurs
-            circle(screen,820,74,7,makecol(255,255,255));
-            circle(screen,820,104,7,makecol(255,255,255));
-            circle(screen,820,134,7,makecol(255,255,255));
-            circle(screen,820,164,7,makecol(255,255,255));
+            circle(screen,820,74,7,makecol(237,158,110));
+            circle(screen,820,104,7,makecol(237,158,110));
+            circle(screen,820,134,7,makecol(237,158,110));
+            circle(screen,820,164,7,makecol(237,158,110));
+
 
             ///affichage noms joueurs
             textprintf_ex(screen,font,845,70,makecol(255,255,255),-1,"joueur 1 :");
             textprintf_ex(screen,font,845,100,makecol(255,255,255),-1,"joueur 2 :");
             textprintf_ex(screen,font,845,130,makecol(255,255,255),-1,"joueur 3 :");
             textprintf_ex(screen,font,845,160,makecol(255,255,255),-1,"joueur 4 :");
+
 
             ///affichage des données communes
             textprintf_ex(screen,font,970,40,makecol(255,255,255),-1,"PV  ");
@@ -66,34 +78,162 @@ int main()
             textprintf_ex(screen,font,1030,160,makecol(255,255,255),-1,"5 ");
             textprintf_ex(screen,font,1090,160,makecol(255,255,255),-1,"3 ");
 
+
             ///affichage des attaques avec caractéristiques
-            textprintf_ex(screen,font,800,250,makecol(255,255,255),-1,"corps a corps : ");
-            textprintf_ex(screen,font,925,260,makecol(255,255,255),-1," - degats : ");
-            textprintf_ex(screen,font,925,270,makecol(255,255,255),-1," - portee : ");
-            textprintf_ex(screen,font,925,280,makecol(255,255,255),-1," - prix en PA : ");
+            textprintf_ex(screen,font,810,250,makecol(255,255,255),-1,"corps a corps : ");
+            textprintf_ex(screen,font,935,260,makecol(255,255,255),-1," - degats : ");
+            textprintf_ex(screen,font,935,270,makecol(255,255,255),-1," - portee : ");
+            textprintf_ex(screen,font,935,280,makecol(255,255,255),-1," - prix en PA : ");
 
-            textprintf_ex(screen,font,800,320,makecol(255,255,255),-1,"sort 1 : ");
-            textprintf_ex(screen,font,875,330,makecol(255,255,255),-1," - degats : ");
-            textprintf_ex(screen,font,875,340,makecol(255,255,255),-1," - portee : ");
-            textprintf_ex(screen,font,875,350,makecol(255,255,255),-1," - prix en PA : ");
+            textprintf_ex(screen,font,810,320,makecol(255,255,255),-1,"sort 1 : ");
+            textprintf_ex(screen,font,885,330,makecol(255,255,255),-1," - degats : ");
+            textprintf_ex(screen,font,885,340,makecol(255,255,255),-1," - portee : ");
+            textprintf_ex(screen,font,885,350,makecol(255,255,255),-1," - prix en PA : ");
 
-            textprintf_ex(screen,font,800,390,makecol(255,255,255),-1,"sort 2 : ");
-            textprintf_ex(screen,font,875,400,makecol(255,255,255),-1," - degats : ");
-            textprintf_ex(screen,font,875,410,makecol(255,255,255),-1," - portee : ");
-            textprintf_ex(screen,font,875,420,makecol(255,255,255),-1," - prix en PA : ");
+            textprintf_ex(screen,font,810,390,makecol(255,255,255),-1,"sort 2 : ");
+            textprintf_ex(screen,font,885,400,makecol(255,255,255),-1," - degats : ");
+            textprintf_ex(screen,font,885,410,makecol(255,255,255),-1," - portee : ");
+            textprintf_ex(screen,font,885,420,makecol(255,255,255),-1," - prix en PA : ");
 
-            textprintf_ex(screen,font,800,460,makecol(255,255,255),-1,"sort 3 : ");
-            textprintf_ex(screen,font,875,470,makecol(255,255,255),-1," - degats : ");
-            textprintf_ex(screen,font,875,480,makecol(255,255,255),-1," - portee : ");
-            textprintf_ex(screen,font,875,490,makecol(255,255,255),-1," - prix en PA : ");
+            textprintf_ex(screen,font,810,460,makecol(255,255,255),-1,"sort 3 : ");
+            textprintf_ex(screen,font,885,470,makecol(255,255,255),-1," - degats : ");
+            textprintf_ex(screen,font,885,480,makecol(255,255,255),-1," - portee : ");
+            textprintf_ex(screen,font,885,490,makecol(255,255,255),-1," - prix en PA : ");
 
-            textprintf_ex(screen,font,800,530,makecol(255,255,255),-1,"sort 4 : ");
-            textprintf_ex(screen,font,875,540,makecol(255,255,255),-1," - degats : ");
-            textprintf_ex(screen,font,875,550,makecol(255,255,255),-1," - portee : ");
-            textprintf_ex(screen,font,875,560,makecol(255,255,255),-1," - prix en PA : ");
+            textprintf_ex(screen,font,810,530,makecol(255,255,255),-1,"sort 4 : ");
+            textprintf_ex(screen,font,885,540,makecol(255,255,255),-1," - degats : ");
+            textprintf_ex(screen,font,885,550,makecol(255,255,255),-1," - portee : ");
+            textprintf_ex(screen,font,885,560,makecol(255,255,255),-1," - prix en PA : ");
+
+
+            ///joueur suivant
+            textprintf_ex(screen,font,840,616,makecol(255,255,255),-1,"joueur suivant -> ");
+
+
+            ///cercles pour attaques
+            circle(screen,800,254,2,makecol(237,158,110));
+            circle(screen,800,324,2,makecol(237,158,110));
+            circle(screen,800,394,2,makecol(237,158,110));
+            circle(screen,800,464,2,makecol(237,158,110));
+            circle(screen,800,534,2,makecol(237,158,110));
+
+
+            ///rectangles qui encadrent les attaques
+            rect(screen,800,245,933,260,makecol(0,0,0));
+            rect(screen,800,315,885,330,makecol(0,0,0));
+            rect(screen,800,385,885,400,makecol(0,0,0));
+            rect(screen,800,455,885,470,makecol(0,0,0));
+            rect(screen,800,525,885,540,makecol(0,0,0));
+
+
+            ///rectangle qui encadre "joueur suivant"
+            rect(screen,830,610,980,625,makecol(0,0,0));
+
+
+            ///tests clics pour "attaques"
+
+                ///corps à corps
+                if ((mouse_x<933)&&(mouse_x>800)&&(mouse_y<260)&&(mouse_y>245))
+                {
+                    if(mouse_b&1 || mouse_b&2)
+                    {
+                        /*
+                        ///rectangle pour afficher les validations après clic
+                        rect(screen,200,200,600,250,makecol(237,158,110));
+                        */
+
+                        textprintf_ex(screen,font,850,220,makecol(99,42,61),-1," Rappuyer pour valider l'attaque : ");
+
+                        attaque = 1;
+                    }
+                }
+
+                ///sort 1
+                if ((mouse_x<885)&&(mouse_x>800)&&(mouse_y<330)&&(mouse_y>315))
+                {
+                    if(mouse_b&1)
+                    {
+                        /*
+                        ///rectangle pour afficher les validations après clic
+                        rect(screen,200,200,600,250,makecol(237,158,110));
+                        */
+
+                        textprintf_ex(screen,font,850,220,makecol(99,42,61),-1," Rappuyer pour valider l'attaque : ");
+
+                        attaque = 2;
+                    }
+                }
+
+                ///sort 2
+                if ((mouse_x<885)&&(mouse_x>800)&&(mouse_y<400)&&(mouse_y>385))
+                {
+                    if(mouse_b&1)
+                    {
+                        /*
+                        ///rectangle pour afficher les validations après clic
+                        rect(screen,200,200,600,250,makecol(237,158,110));
+                        */
+
+                        textprintf_ex(screen,font,850,220,makecol(99,42,61),-1," Rappuyer pour valider l'attaque : ");
+
+                        attaque = 3;
+                    }
+                }
+
+                ///sort 3
+                if ((mouse_x<885)&&(mouse_x>800)&&(mouse_y<470)&&(mouse_y>455))
+                {
+                    if(mouse_b&1)
+                    {
+                        /*
+                        ///rectangle pour afficher les validations après clic
+                        rect(screen,200,200,600,250,makecol(237,158,110));
+                        */
+
+                        textprintf_ex(screen,font,850,220,makecol(99,42,61),-1," Rappuyer pour valider l'attaque : ");
+
+                        attaque = 4;
+                    }
+                }
+
+                ///sort 4
+                if ((mouse_x<885)&&(mouse_x>800)&&(mouse_y<540)&&(mouse_y>525))
+                {
+                    if(mouse_b&1)
+                    {
+                        /*
+                        ///rectangle pour afficher les validations après clic
+                        rect(screen,200,200,600,250,makecol(237,158,110));*/
+
+                        textprintf_ex(screen,font,850,220,makecol(99,42,61),-1," Rappuyer pour valider l'attaque : ");
+
+                        attaque = 4;
+                    }
+                }
+
+
+            ///test clic pour "joueur suivant"
+            if ((mouse_x<980)&&(mouse_x>630)&&(mouse_y<625)&&(mouse_y>610))
+                {
+                    if(mouse_b&1 || mouse_b&2)
+                    {
+                        /*
+                        ///rectangle pour afficher les validations après clic
+                        rect(screen,200,200,600,250,makecol(237,158,110));
+                        */
+
+                        textprintf_ex(screen,font,810,220,makecol(99,42,61),-1," Rappuyer pour passer au joueur suivant : ");
+
+                        joueur_suivant = 1;
+                    }
+                }
+
+
+
 
         }
 
         return 0;
 
 }END_OF_MAIN();
+
