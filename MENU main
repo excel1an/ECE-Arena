@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <allegro.h>
+
+int main()
+{
+    allegro_init();///initialisation
+    int i=0,j=0;
+    int joueurs =0;
+
+    install_keyboard(); ///pour utiliser le clavier
+    install_mouse();   ///pour pouvoir utiliser la souris
+
+    set_color_depth(desktop_color_depth());///Couleur
+    /* Maintenant, on déclare notre sprite de type pointeur vers BITMAP. Attention, il s’agit
+        bien d’un pointeur ! Faites attention de ne pas oublier « * » */
+
+    if ((set_gfx_mode(GFX_AUTODETECT_WINDOWED,1200,650,0,0))!=0)
+    {
+        allegro_message("Probleme de mode graphique");
+        allegro_exit();
+        exit(EXIT_FAILURE);
+    }
+
+    show_mouse(screen);
+
+    ///menu de choix du nombre de joueurs
+    joueurs = menujoueur();
+
+    ///menu de choix de classe
+    menuclasse(joueurs);
+
+    /// ecran de chargement
+    ecranchargement();
+
+
+    return 0;
+}END_OF_MAIN();
+
+
