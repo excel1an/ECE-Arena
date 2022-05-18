@@ -1,0 +1,10 @@
+#ifndef HEADER_H_INCLUDED
+#define HEADER_H_INCLUDED
+
+void effacEcran();
+int menujoueur();
+void menuclasse();
+void ecranchargement();
+
+
+#endif // HEADER_H_INCLUDED
