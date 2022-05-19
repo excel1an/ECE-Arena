@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <allegro.h>
+
+///sous-programmes à appeler dans le main
+
+int attaque_une_spike()
+{
+    int degats;
+    int points_de_vie=75;
+
+    ///degats -> 12 avec +/- 2
+    degats=rand()%(14-10+1)+10;
+    points_de_vie -= degats;
+
+    return points_de_vie;
+}
+
+
+int attaque_deux_spike()
+{
+    int degats;
+    int points_de_vie=75;
+
+    ///degats -> 6 avec +/- 1
+    degats=rand()%(7-5+1)+5;
+    points_de_vie -= degats;
+
+    return points_de_vie;
+}
+
+
+int attaque_trois_spike()
+{
+    int degats;
+    int points_de_vie=75;
+
+    ///degats -> 8 avec +/- 2
+    degats=rand()%(10-6+1)+6;
+    points_de_vie -= degats;
+
+    return points_de_vie;
+}
+
+
+int attaque_quatre_spike()
+{
+    int degats;
+    int points_de_vie=75;
+
+    ///degats -> 11 avec +/- 3
+    degats=rand()%(14-8+1)+8;
+    points_de_vie -= degats;
+
+    return points_de_vie;
+}
+
+
+int attaque_cinq_spike()
+{
+    int degats;
+    int points_de_vie=75;
+
+    ///degats -> 13 avec +/- 4
+    degats=rand()%(17-9+1)+9;
+    points_de_vie -= degats;
+
+    return points_de_vie;
+}
+
