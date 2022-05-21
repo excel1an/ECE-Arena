@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <allegro.h>
+#include <time.h>
+
+#define SCREEN_W 1200
+#define SCREEN_H 650
+
+ void init_Allegro()
+ {
+     allegro_init();
+     install_mouse();
+     install_keyboard();
+     set_color_depth(desktop_color_depth());
+     if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,800,600,0,0)!=0)
+     {
+         allegro_message("probleme mode graphique");
+         allegro_exit();
+         exit(EXIT_FAILURE);
+     }
+     show_mouse(screen);
+}
+
+int main()
+{
+    init_Allegro();
+
+    int posxEnnemi, posyEnnemi, posx, posy, posxRond, posyRond;
+    int depx, depy;
+    int portee, degats;
+
+    int cptimg=0, tmpimg=4, imgcourante=0;
+
+    BITMAP* caillou;
+    BITMAP* fissure;
+    BITMAP* perso;
+    BITMAP* buffer;
+
+    srand(time(NULL));
+
+    buffer = create_bitmap(1200, 650);
+    caillou = load_bitmap("stalagmite.bmp", NULL);
+    fissure = load_bitmap("fissure4.bmp", NULL);
+    perso = load_bitmap("perso.bmp", NULL);
+
+    posx=300;
+    posy=200;
+    posxRond=600;
+    posyRond=400;
+    posxRond=600;
+    posyEnnemi=200;
+
+
+    while(!key[KEY_ESC])
+    {
+        draw_sprite(screen, perso, posx, posy);
+        circlefill(screen, posxRond, posyRond, 50, makecol(255, 0, 0));
+        draw_sprite(screen, perso, posxEnnemi, posyEnnemi);
+
+        if(mouse_x>=posxRond-50 && posxRond<=posxRond+50 && mouse_y>=posyRond-50 && mouse_y<=posyRond+50)
+        {
+            if(mouse_b&1 || mouse_b&2)
+            {
+                masked_stretch_blit(fissure, screen, 0, 0, 800, 600, posx+225, posy+325, 90, 30);
+                masked_stretch_blit(caillou, screen, 0, 0, 800, 600, posx+210, posy+305, 29, 50);
+            }
+        }
+    }
+    return 0;
+}END_OF_MAIN();
