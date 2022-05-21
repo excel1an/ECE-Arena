@@ -1,0 +1,42 @@
+#ifndef HEADER_H_INCLUDED
+#define HEADER_H_INCLUDED
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <allegro.h>
+
+// Pour plus de simplicité : constantes des tuiles utilisées en globale
+
+#define NTUILE    27 /// nombre de tuiles graphiques utilisées
+#define TXTUILE   30 /// largeur des tuiles
+#define TYTUILE   30 /// hauteur des tuiles
+#define NCOLTUILE  7 /// nombre de colonnes de tuile dans le fichier image
+
+#define NXMAP     25 ///nombre de tuiles en largeur sur la carte
+#define NYMAP     20 ///nombre de tuiles en hauteur sur la carte
+
+///-----------------------STRUCTURES----------------------
+
+typedef struct joueur
+{
+    int num;
+    int pv;
+    int pa;
+    int pm;
+    int Posx;
+    int Posy;
+    int classe;
+    BITMAP*img;
+}t_joueur;
+
+
+
+
+void effacEcran();
+int menujoueur();
+t_joueur* menuclasse();
+void ecranchargement();
+void plateaujeu();
+
+
+#endif // HEADER_H_INCLUDED
