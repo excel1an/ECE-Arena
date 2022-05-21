@@ -1,0 +1,314 @@
+void tourdejeu()
+{
+    ///Declarations
+
+    unsigned long secondes = 0;
+
+    unsigned long timer;
+
+    int JoueurSuivant=0;
+
+    ///Duree du tour
+
+    clock_t debut = clock();
+
+    while(secondes<30 && JoueurSuivant!=1)
+    {
+        ///mesure du temps
+
+        clock_t actuel = clock();
+        secondes = (actuel - debut)/CLOCKS_PER_SEC;
+        timer = 30 - secondes;
+
+        textprintf_ex(screen,font,1161,615,makecol(0,144,144),-1,"%ld",timer);
+        rest(1000);
+        rectfill(screen,1160,615,1188,635,makecol(0,0,0));
+
+        /*
+        ///Test bouton "Joueur suivant"
+
+        if((mouse_x>806)&&(mouse_x<826)&&(mouse_y>610)&&(mouse_y<630))
+        {
+            if(mouse_b&1 || mouse_b&2)
+            {
+                textprintf_ex(screen,font,mouse_x,mouse_y,makecol(255,255,255),-1,"*");
+
+                //passer au prochain joueur
+
+                JoueurSuivant = 1;
+            }
+        }
+        */
+
+    }  //fin while
+}
+
+void affichage(int nbjoueurs)
+{
+    int joueur_suivant=0;
+
+    install_keyboard();//pour utiliser le clavier
+    install_mouse();//pour pouvoir utiliser la souris
+
+    show_mouse(screen);
+
+    while(!key[KEY_ESC])
+    {
+        if(nbjoueurs==2)
+        {
+            ///rectangles
+            rect(screen,770,10,1190,640,makecol(237,158,110));
+            rect(screen,770,10,1190,200,makecol(237,158,110));
+            rect(screen,770,10,1190,600,makecol(237,158,110));
+            rect(screen,806,610,826,630,makecol(237,158,110));
+
+            ///cercles des joueurs
+            circle(screen,820,89,7,makecol(237,158,110));
+            circle(screen,820,134,7,makecol(237,158,110));
+
+            ///affichage noms joueurs
+            textprintf_ex(screen,font,845,85,makecol(255,255,255),-1,"joueur 1 :");
+            textprintf_ex(screen,font,845,130,makecol(255,255,255),-1,"joueur 2 :");
+
+            ///affichage des données communes
+            textprintf_ex(screen,font,970,47,makecol(237,158,110),-1,"PV  ");
+            textprintf_ex(screen,font,1030,47,makecol(237,158,110),-1,"PA  ");
+            textprintf_ex(screen,font,1090,47,makecol(237,158,110),-1,"PM  ");
+
+            textprintf_ex(screen,font,970,85,makecol(255,255,255),-1,"75");
+            textprintf_ex(screen,font,1034,85,makecol(255,255,255),-1,"5 ");
+            textprintf_ex(screen,font,1094,85,makecol(255,255,255),-1,"3 ");
+
+            textprintf_ex(screen,font,970,130,makecol(255,255,255),-1,"75");
+            textprintf_ex(screen,font,1034,130,makecol(255,255,255),-1,"5 ");
+            textprintf_ex(screen,font,1094,130,makecol(255,255,255),-1,"3 ");
+
+            ///joueur suivant
+            textprintf_ex(screen,font,840,615,makecol(255,255,255),-1,"joueur suivant -> ");
+
+            ///test clic pour "joueur suivant"
+            if ((mouse_x<816)&&(mouse_x>806)&&(mouse_y<630)&&(mouse_y>610))
+                {
+                    if(mouse_b&1 || mouse_b&2)
+                    {
+                        /*
+                        ///rectangle pour afficher les validations après clic
+                        rect(screen,200,200,600,250,makecol(237,158,110));
+                        */
+
+                        textprintf_ex(screen,font,810,220,makecol(0,144,144),-1," Rappuyer pour passer au joueur suivant : ");
+
+                        joueur_suivant = 1;
+                    }
+                }
+
+            ///test de validation pour joueur suivant
+            if(joueur_suivant==1)
+            {
+                if ((mouse_x<826)&&(mouse_x>816)&&(mouse_y<630)&&(mouse_y>610))
+                {
+                    if(mouse_b&1 || mouse_b&2)
+                    {
+                        ///appeler sous programme pour passage au joueur suivant -> tour de jeu ?
+                        ///ex: tour_de_jeu();
+
+                        ///rectangle pour afficher les validations après clic
+                        rect(screen,200,200,600,250,makecol(237,158,110));
+
+                        textprintf_ex(screen,font,250,220,makecol(0,144,144),-1," Passage au joueur suivant : ");
+                    }
+                }
+
+            }
+
+            tourdejeu();
+        }
+
+        if(nbjoueurs==3)
+        {
+            ///rectangles
+            rect(screen,770,10,1190,640,makecol(237,158,110));
+            rect(screen,770,10,1190,200,makecol(237,158,110));
+            rect(screen,770,10,1190,600,makecol(237,158,110));
+            rect(screen,806,610,826,630,makecol(237,158,110));
+
+            ///cercles pour joueurs
+            circle(screen,820,74,7,makecol(237,158,110));
+            circle(screen,820,104,7,makecol(237,158,110));
+            circle(screen,820,134,7,makecol(237,158,110));
+
+            ///affichage noms joueurs
+            textprintf_ex(screen,font,845,70,makecol(255,255,255),-1,"joueur 1 :");
+            textprintf_ex(screen,font,845,100,makecol(255,255,255),-1,"joueur 2 :");
+            textprintf_ex(screen,font,845,130,makecol(255,255,255),-1,"joueur 3 :");
+
+            ///affichage des données communes
+            textprintf_ex(screen,font,970,40,makecol(237,158,110),-1,"PV  ");
+            textprintf_ex(screen,font,1030,40,makecol(237,158,110),-1,"PA  ");
+            textprintf_ex(screen,font,1090,40,makecol(237,158,110),-1,"PM  ");
+
+
+            textprintf_ex(screen,font,970,70,makecol(255,255,255),-1,"75");
+            textprintf_ex(screen,font,1034,70,makecol(255,255,255),-1,"5 ");
+            textprintf_ex(screen,font,1094,70,makecol(255,255,255),-1,"3 ");
+
+            textprintf_ex(screen,font,970,100,makecol(255,255,255),-1,"75");
+            textprintf_ex(screen,font,1034,100,makecol(255,255,255),-1,"5 ");
+            textprintf_ex(screen,font,1094,100,makecol(255,255,255),-1,"3 ");
+
+            textprintf_ex(screen,font,970,130,makecol(255,255,255),-1,"75");
+            textprintf_ex(screen,font,1034,130,makecol(255,255,255),-1,"5 ");
+            textprintf_ex(screen,font,1094,130,makecol(255,255,255),-1,"3 ");
+
+            ///joueur suivant
+            textprintf_ex(screen,font,840,615,makecol(255,255,255),-1,"joueur suivant -> ");
+
+            ///test clic pour "joueur suivant"
+            if ((mouse_x<816)&&(mouse_x>806)&&(mouse_y<630)&&(mouse_y>610))
+                {
+                    if(mouse_b&1 || mouse_b&2)
+                    {
+                        /*
+                        ///rectangle pour afficher les validations après clic
+                        rect(screen,200,200,600,250,makecol(237,158,110));
+                        */
+
+                        textprintf_ex(screen,font,810,220,makecol(0,144,144),-1," Rappuyer pour passer au joueur suivant : ");
+
+                        joueur_suivant = 1;
+                    }
+                }
+
+            ///test de validation pour joueur suivant
+            if(joueur_suivant==1)
+            {
+                if ((mouse_x<826)&&(mouse_x>816)&&(mouse_y<630)&&(mouse_y>610))
+                {
+                    if(mouse_b&1 || mouse_b&2)
+                    {
+                        ///appeler sous programme pour passage au joueur suivant -> tour de jeu ?
+                        ///ex: tour_de_jeu();
+
+                        ///rectangle pour afficher les validations après clic
+                        rect(screen,200,200,600,250,makecol(237,158,110));
+
+                        textprintf_ex(screen,font,250,220,makecol(0,144,144),-1," Passage au joueur suivant : ");
+                    }
+                }
+
+            }
+
+            tourdejeu();
+        }
+
+        if(nbjoueurs==4)
+        {
+            ///rectangles
+            rect(screen,770,10,1190,640,makecol(237,158,110));
+            rect(screen,770,10,1190,200,makecol(237,158,110));
+            rect(screen,770,10,1190,600,makecol(237,158,110));
+            rect(screen,806,610,826,630,makecol(237,158,110));
+
+            ///cercles pour joueurs
+            circle(screen,820,74,7,makecol(237,158,110));
+            circle(screen,820,104,7,makecol(237,158,110));
+            circle(screen,820,134,7,makecol(237,158,110));
+            circle(screen,820,164,7,makecol(237,158,110));
+
+            ///affichage noms joueurs
+            textprintf_ex(screen,font,845,70,makecol(255,255,255),-1,"joueur 1 :");
+            textprintf_ex(screen,font,845,100,makecol(255,255,255),-1,"joueur 2 :");
+            textprintf_ex(screen,font,845,130,makecol(255,255,255),-1,"joueur 3 :");
+            textprintf_ex(screen,font,845,160,makecol(255,255,255),-1,"joueur 4 :");
+
+            ///affichage des données communes
+            textprintf_ex(screen,font,970,40,makecol(237,158,110),-1,"PV  ");
+            textprintf_ex(screen,font,1030,40,makecol(237,158,110),-1,"PA  ");
+            textprintf_ex(screen,font,1090,40,makecol(237,158,110),-1,"PM  ");
+
+
+            textprintf_ex(screen,font,970,70,makecol(255,255,255),-1,"75");
+            textprintf_ex(screen,font,1034,70,makecol(255,255,255),-1,"5 ");
+            textprintf_ex(screen,font,1094,70,makecol(255,255,255),-1,"3 ");
+
+            textprintf_ex(screen,font,970,100,makecol(255,255,255),-1,"75");
+            textprintf_ex(screen,font,1034,100,makecol(255,255,255),-1,"5 ");
+            textprintf_ex(screen,font,1094,100,makecol(255,255,255),-1,"3 ");
+
+            textprintf_ex(screen,font,970,130,makecol(255,255,255),-1,"75");
+            textprintf_ex(screen,font,1034,130,makecol(255,255,255),-1,"5 ");
+            textprintf_ex(screen,font,1094,130,makecol(255,255,255),-1,"3 ");
+
+            textprintf_ex(screen,font,970,160,makecol(255,255,255),-1,"75");
+            textprintf_ex(screen,font,1034,160,makecol(255,255,255),-1,"5 ");
+            textprintf_ex(screen,font,1094,160,makecol(255,255,255),-1,"3 ");
+
+            ///joueur suivant
+            textprintf_ex(screen,font,840,615,makecol(255,255,255),-1,"joueur suivant -> ");
+
+            ///test clic pour "joueur suivant"
+            if ((mouse_x<816)&&(mouse_x>806)&&(mouse_y<630)&&(mouse_y>610))
+                {
+                    if(mouse_b&1 || mouse_b&2)
+                    {
+                        /*
+                        ///rectangle pour afficher les validations après clic
+                        rect(screen,200,200,600,250,makecol(237,158,110));
+                        */
+
+                        textprintf_ex(screen,font,810,220,makecol(0,144,144),-1," Rappuyer pour passer au joueur suivant : ");
+
+                        joueur_suivant = 1;
+                    }
+                }
+
+            ///test de validation pour joueur suivant
+            if(joueur_suivant==1)
+            {
+                if ((mouse_x<826)&&(mouse_x>816)&&(mouse_y<630)&&(mouse_y>610))
+                {
+                    if(mouse_b&1 || mouse_b&2)
+                    {
+                        ///appeler sous programme pour passage au joueur suivant -> tour de jeu ?
+                        ///ex: tour_de_jeu();
+
+                        ///rectangle pour afficher les validations après clic
+                        rect(screen,200,200,600,250,makecol(237,158,110));
+
+                        textprintf_ex(screen,font,250,220,makecol(0,144,144),-1," Passage au joueur suivant : ");
+                    }
+                }
+
+            }
+
+            tourdejeu();
+        }
+
+    }
+}
+
+
+
+int joueurActuel(int nbjoueurs)
+{
+    /// Declarations
+
+    int joueur_actuel;
+
+   /// Generation aleatoire
+
+    joueur_actuel = rand()%(nbjoueurs-1+1)+1;
+
+    /// Passage joueur suivant
+
+    if(joueur_actuel<nbjoueurs)
+    {
+        joueur_actuel++;
+    }
+    else if(joueur_actuel=nbjoueurs)
+    {
+        joueur_actuel = 1;
+    }
+
+    return joueur_actuel;
+}
