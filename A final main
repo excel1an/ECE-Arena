@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <allegro.h>
+#include "hedearjeu3.h"
+#include <time.h>
+
+int main()
+{
+    allegro_init();///initialisation
+    int i=0,j=0;
+    int NBjoueurs =0;
+
+    BITMAP * page;
+
+    t_joueur * tablojoueurs;
+
+    install_keyboard(); ///pour utiliser le clavier
+    install_mouse();   ///pour pouvoir utiliser la souris
+
+    set_color_depth(desktop_color_depth());///Couleur
+
+    srand(time(NULL));
+
+
+    if ((set_gfx_mode(GFX_AUTODETECT_WINDOWED,1200,650,0,0))!=0)
+    {
+        allegro_message("Probleme de mode graphique");
+        allegro_exit();
+        exit(EXIT_FAILURE);
+    }
+
+    show_mouse(screen);
+
+
+    // CREATION DU BUFFER D'AFFICHAGE à la taille de l'écran
+    page=create_bitmap(SCREEN_W,SCREEN_H);
+    clear_bitmap(page);
+
+    ///menu de choix du nombre de joueurs
+    NBjoueurs = menujoueur();
+
+    ///menu de choix de classe
+    tablojoueurs = menuclasse(NBjoueurs);
+
+    /// ecran de chargement
+    //ecranchargement();
+
+    plateaujeu(page, tablojoueurs, NBjoueurs);
+
+
+    return 0;
+}END_OF_MAIN();
