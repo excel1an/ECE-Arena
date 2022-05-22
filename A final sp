@@ -881,9 +881,11 @@ void plateaujeu(BITMAP * page, t_joueur *TabJ, int nbjoueurs)
 }
 
 
-void affichage(int nbjoueurs)
+void affichage(int nbjoueurs, t_joueur *TabJ)
 {
     int joueur_suivant=0;
+    int i=0;
+    int attaque=0;
 
     while(!key[KEY_ESC])
     {
